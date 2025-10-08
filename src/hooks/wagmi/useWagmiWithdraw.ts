@@ -38,8 +38,8 @@ export const useWagmiWithdraw = () => {
     if (!stakeContract || !address) return;
     try {
       const staked = await stakeContract.read.stakingBalance([Pid, address]);
-      const [requestAmount, pendingWithdrawAmount] =
-        await stakeContract.read.withdrawAmount([Pid, address]);
+      const withdrawAmount = await stakeContract.read.withdrawAmount([Pid, address]);
+      const [requestAmount, pendingWithdrawAmount] = withdrawAmount as [bigint, bigint];
       
       const ava = Number(formatUnits(pendingWithdrawAmount, 18));
       const total = Number(formatUnits(requestAmount, 18));

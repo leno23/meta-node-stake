@@ -155,6 +155,7 @@ export const useViemWithdraw = () => {
         [BigInt(Pid), parseEther(amount)],
         {
           account: address as `0x${string}`,
+          chain: publicClient.chain,
         }
       );
 
@@ -188,6 +189,7 @@ export const useViemWithdraw = () => {
 
       const hash = await contract.write.withdraw([BigInt(Pid)], {
         account: address as `0x${string}`,
+        chain: publicClient.chain,
       });
 
       await publicClient.waitForTransactionReceipt({ hash });

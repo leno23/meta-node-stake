@@ -1,9 +1,7 @@
 import { sepolia } from "viem/chains";
 import { PublicClient, createPublicClient, http } from 'viem'
 import { mainnet } from 'viem/chains'
-
-
-
+import { SepoliaRpcUrl } from './env';
 
 
 export const viemClients = (chaiId: number): PublicClient => {
@@ -12,7 +10,7 @@ export const viemClients = (chaiId: number): PublicClient => {
   } = {
     [sepolia.id]: createPublicClient({
       chain: sepolia,
-      transport: http('https://sepolia.infura.io/v3/d8ed0bd1de8242d998a1405b6932ab33')
+      transport: http(SepoliaRpcUrl)
     })
   }
   return clients[chaiId]

@@ -1,2 +1,3 @@
+import { StakePoolId } from './env';
 
-export const Pid = 0
+export const Pid = StakePoolId;
